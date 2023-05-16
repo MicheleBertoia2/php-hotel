@@ -41,6 +41,8 @@ $hotels = [
 
 ];
 
+
+
 ?>
 
 
@@ -60,15 +62,32 @@ $hotels = [
 
 <h1>listino hotel</h1>
 
-<ul>
-  <?php
-  foreach($hotels as $hotel){
-    foreach($hotel as $chiave => $valore){
-      echo "<li> Chiave: $chiave Valore: $valore</li>";
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <?php
+      foreach($hotels as $hotel){
+        $headers = array_keys($hotel);
+      }       
+      foreach($headers as $header){
+        echo "<th scope='col'>$header</th>";          
+      }
+      ?>      
+    </tr>
+  </thead>
+  <tbody>
+    <?php foreach($hotels as $hotel){
+      echo "<tr>";
+        foreach($hotel as $property => $value){
+          echo "<th scope='row'>$value</th>";
+        }
+      echo "</tr>";
     }
-  }
-  ?>
-</ul>
+    
+    ?>    
+</table>
   
 </body>
 </html>
